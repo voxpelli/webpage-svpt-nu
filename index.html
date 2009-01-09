@@ -21,12 +21,51 @@
   <script type="text/javascript">
   //<![CDATA[
     $(function () {
-      var update_search;
+      var update_search, update_toplist, users = {};
 
       $('#nojavascript').text('Laddar...');
 
-      update_search = function (maxid) {
-        $.getJSON('http://search.twitter.com/search.json?callback=?', {q: '#svpt', since_id: maxid, rpp: 30}, function (data, textStatus) {
+      update_toplist = function() {
+        var top = [], i = 0, length = 0, topdom, sidebar, toplist;
+        for (var key in users) {
+          if (top[0] === undefined) {
+            top[0] = {count: users[key].count, user: key}
+          }
+          else if (users[key].count > top[length].count) {
+            for (i = 0; i < length + 1; i++) {
+              if (users[key] > top[i].count) {
+                top.splice(i, 0, {count: users[key].count, user: key});
+                length++;
+                break;
+              }
+            } 
+          }
+          else if (length < 5) {
+            length++;
+            top[length] = {count: users[key].count, user: key}
+          }
+        }
+        if (top.length) {
+          toplist = $('#sidebar_toplist_widget ol');
+          if (!toplist.length) {
+           sidebar = $('#sidebar');
+           sidebar.append('<hr/>');
+
+           toplist = $('<ol></ol>');
+           $('<div><h2>Fem toppkvittrare nu</h2></div>').attr('id', 'sidebar_toplist_widget').append(toplist).appendTo(sidebar);
+          }
+          toplist.children().remove();
+          if (length > 4) {
+            length = 4;
+          }
+          for (i = 0; i < length + 1; i++) {
+            $('<li></li>').append($('<img/>').attr({alt: '', src: users[top[i].user].image})).append($('<a></a>').attr({href: 'http://twitter.com/' + top[i].user}).text(' ' + top[i].user + ' ')).append($('<span></span>').text('' + top[i].count)).appendTo(toplist);
+          }
+        }
+      };
+
+      update_search = function (maxid, statistics) {
+        $.getJSON('http://search.twitter.com/search.json?callback=?', {q: '#svpt', since_id: maxid, rpp: 100}, function (data, textStatus) {
           $('#nojavascript').remove();
           var i = data.results.length - 1, box = $('#main'), tweet, postbody, result, url_to_a, user_to_a, hash_to_a, time, minutes;
           url_to_a = /\b(http:\/\/[a-z0-9-]+(?:\.[a-z0-9-]+)*\.[a-z]{2,4}(?:[-a-z0-9_:&?=+,.!\/*%\$]*)?)\b/gim;
@@ -35,6 +74,18 @@
 
           for (; i >= 0; i--) {
             result = data.results[i];
+
+            if (users[result.from_user] === undefined) {
+              users[result.from_user] = {count: 1, image: result.profile_image_url};
+            }
+            else {
+              users[result.from_user].count++;
+            }
+
+            if (i > 19 && statistics) {
+              continue;
+            }
+
             tweet = $('<div></div>').addClass('post');
 
             $('<a></a>').attr('href', 'http://twitter.com/' + result.from_user).append($('<img/>').addClass('avatar').attr({src: result.profile_image_url.replace('_normal.', '_bigger.'), width: 73, height: 73, alt: result.from_user})).appendTo(tweet);
@@ -48,19 +99,22 @@
             }
 
             $('<p></p>').addClass('postmeta').text(' skrev det här kl ' + created.getHours() + ':' + minutes).prepend($('<a></a>').text(result.from_user).attr('href', 'http://twitter.com/' + result.from_user)).appendTo(postbody);
-            $('<p></p>').html(result.text.replace(url_to_a, '<a href="$1">$1</a>').replace(user_to_a, '<span class="at">@</span><a href="http://twitter.com/$1">$1</a>').replace(hash_to_a, '<a href="http://search.twitter.com/search?q=%23$1">#$1</a>')).appendTo(postbody);
+            $('<p></p>').html(result.text.replace(url_to_a, '<a href="$1">$1</a>').replace(user_to_a, '<span class="at">@</span><a href="http://twitter.com/$1">$1</a>').replace(hash_to_a, '#<a href="http://search.twitter.com/search?q=%23$1">$1</a>')).appendTo(postbody);
 
-            tweet.append(postbody).hide().prependTo(box).css('min-height', '0').slideDown(function () {
+            tweet.append(postbody).prependTo(box).hide().css('min-height', '0').slideDown(function () {
               $(this).css('min-height', '');
             });
           }
+
+          update_toplist();
+
           setTimeout(function() {
             update_search(data.max_id);
           }, 30000);
         });
       };
 
-      update_search(0);
+      update_search(0, true);
     });
   //]]>
   </script>
@@ -73,26 +127,14 @@
 		<h2>Senaste kvittret med hashtaggen #<abbr title="Svenskar på Twitter">svpt</abbr></h2>
 	</div>
 	<div id="main">
-	  <p id="nojavascript">Om du har javascript aktiverat så här att laddas in de senaste svenska tweetsen</p>
+	  <p id="nojavascript">De senaste kvittren laddas in här för de med javascript aktiverat...</p>
 	</div>
 	<div id="sidebar">
 		<div id="sidebar_infobox">
 			<h2>Information</h2>
 			<p>Svpt.nu är ett enkelt sätt att följa allt som sägs inom hashtaggen #<abbr title="Svenskar på Twitter">svpt</abbr>. Detta gjordes under ungefär en timma en snuvig januarikväll när Twitter fullkomligt exploderade med svenska användare. </p>
 		</div>
-		<hr />
-		<div id="sidebar_toplist_widget">
-			<h2>Fem toppkvittrare</h2>
-			<ol>
-				<li><img src="http://static.twitter.com/images/default_profile_bigger.png" alt="" /> <a href="http://twitter.com/tisse">Tisse</a> <span>180</span></li>
-				<li><img src="http://s3.amazonaws.com/twitter_production/profile_images/67337916/billy-mccormac_bigger.jpg" alt="" /> <a href="http://twitter.com/billym_timbro">billym_timbro</a> <span>125</span></li>
-				<li>Matte</li>
-				<li>Tisse</li>
-				<li>Matte</li>
-			</ol>
-			<a href="/">Se hela listan med toppkvittrare</a>
-		</div>
-		<hr />
+<!--		<hr />
 		<div id="sidebar_senaste_lankar">
 			<h2>Tio kvittrade länkar</h2>
 			<ul>
@@ -108,7 +150,7 @@
 				<li><a href="http://tinyurl.com/8morzd">http://tinyurl.com/8morzd</a></li>
 			</ul>
 			<a href="/">Fler länkar</a>
-		</div>
+		</div>-->
 		
 	</div>
 
