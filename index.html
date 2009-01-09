@@ -4,9 +4,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="description" content="Svpt.nu är ett enkelt sätt att följa svenskar på Twitter." />
+	<meta name="keywords" content="Twitter, svpt, svenskar, svenska" />
+	<meta name="robots" content="index, follow" />
 
 	<title>Kvittrande Svenskar</title>
-	<link rel="stylesheet" href="style.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="style.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 
   <script type="text/javascript" src="jquery-1.2.6.min.js"></script>
   <script type="text/javascript">
@@ -32,7 +35,7 @@
             postbody = $('<div></div>').addClass('postbody');
 
             $('<p></p>').addClass('postmeta').text(' postade det här ' + (new Date(result.created_at)).toLocaleTimeString()).prepend($('<a></a>').text(result.from_user).attr('href', 'http://twitter.com/' + result.from_user)).appendTo(postbody);
-            $('<p></p>').html(result.text.replace(url_to_a, '<a href="$1">$1</a>').replace(user_to_a, '@<a href="http://twitter.com/$1">$1</a>').replace(hash_to_a, '<a href="http://search.twitter.com/search?q=$1">$1</a>')).appendTo(postbody);
+            $('<p></p>').html(result.text.replace(url_to_a, '<a href="$1">$1</a>').replace(user_to_a, '<span class="at">@</span><a href="http://twitter.com/$1">$1</a>').replace(hash_to_a, '<a href="http://search.twitter.com/search?q=$1">$1</a>')).appendTo(postbody);
 
             tweet.append(postbody).hide().prependTo(box).css('min-height', '0').slideDown(function () {
               $(this).css('min-height', '');
@@ -54,7 +57,7 @@
 <div id="wrapper">
 	<div id="header">
 		<h1>Svenskar på Twitter</h1>
-		<h2>För alla Twittrare som använder sig utav hashtaggen #<abbr title="Svenskar på Twitter">svpt</abbr></h2>
+		<h2>Tweets med hashtaggen #<abbr title="Svenskar på Twitter">svpt</abbr></h2>
 		<hr />
 	</div>
 	<div id="main">
@@ -62,16 +65,15 @@
 	</div>
 	<div id="sidebar">
 		<h2>Information</h2>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 		
 	</div>
-	<hr />
+
 	<div id="footer">
 		<p>Hoppa in det nya året med <a href="http://www.twitter.com">Twitter</a> /P&amp;P</p>
 		
 	</div>
 </div>
-
 
 </body>
 </html>

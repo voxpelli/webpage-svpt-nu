@@ -5,10 +5,10 @@
 
 body{
 	font-size: 16px;
-	background-color: #fafafa;
+	background-color: #f4f4f4;
 	color: #333;
 	font-family: "Times New Roman", Times, Georgia, serif;
-	border-top: 5px solid #ccc;
+	border-top: 5px solid #444;
 }
 
 a{
@@ -21,7 +21,7 @@ a:hover{
 }
 
 hr{
-	border-top: 1px solid #aaa;
+	border-top: 1px dashed #777;
 	border-bottom:none;
 	border-right: none;
 	border-left: none;
@@ -50,6 +50,7 @@ hr{
 	font-size: 25px;
 	font-weight: bold;
 	padding-bottom:20px;
+	margin-bottom: 10px;
 	text-transform: uppercase;
 	color: #777;
 }
@@ -67,12 +68,17 @@ hr{
 
 #sidebar{
 	width: 300px;
-	padding-left:19px;
-	border-left: 1px solid #aaa;
+	padding:8px;
+	background-color: #fff;
+	border: 1px solid #ddd;
 	float:left;
 	font-size: 16px;
 	font-family: Helvetica, Arial, "MS Trebuchet", sans-serif;
 	color: #444;
+}
+
+#sidebar p{
+	line-height: 140%;
 }
 
 .post{
@@ -85,8 +91,8 @@ hr{
 }
 
 .postbody{
-	font-size: 20px;
-	line-height:130%;
+	font-size: 18px;
+	line-height:140%;
 }
 
 .postmeta{
@@ -98,11 +104,11 @@ hr{
 }
 
 .avatar{
-	width: 93px;
-	height: 93px;
+	width: 73px;
+	height: 73px;
 	padding: 3px;
 	border: 1px solid #999;
-	background-color: #fafafa;
+	background-color: #fff;
 	margin-right: 10px;
 	float:left;
 }
@@ -116,4 +122,9 @@ hr{
 	font-weight: bold;
 	text-transform: uppercase;
 	padding:15px 0;
+}
+
+.at{
+	font-size: 80%;
+	font-family: Arial, "MS Trebuchet", sans-serif;
 }
