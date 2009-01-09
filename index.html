@@ -22,7 +22,7 @@
       update_search = function (maxid) {
         $.getJSON('http://search.twitter.com/search.json?callback=?', {q: '#svpt', since_id: maxid, rpp: 30}, function (data, textStatus) {
           $('#nojavascript').remove();
-          var i = data.results.length - 1, box = $('#main'), tweet, postbody, result, url_to_a, user_to_a, hash_to_a;
+          var i = data.results.length - 1, box = $('#main'), tweet, postbody, result, url_to_a, user_to_a, hash_to_a, time, minutes;
           url_to_a = /\b(http:\/\/[a-z0-9-]+(?:\.[a-z0-9-]+)*\.[a-z]{2,4}(?:[-a-z0-9_:&?=+,.!\/*%\$]*)?)\b/gim;
           user_to_a = /@([a-z0-9]+)\b/gim;
           hash_to_a = /(#[^"\s]+)\b/gim;
@@ -34,7 +34,13 @@
 
             postbody = $('<div></div>').addClass('postbody');
 
-            $('<p></p>').addClass('postmeta').text(' postade det här ' + (new Date(result.created_at)).toLocaleTimeString()).prepend($('<a></a>').text(result.from_user).attr('href', 'http://twitter.com/' + result.from_user)).appendTo(postbody);
+            created = new Date(result.created_at);
+            minutes = created.getMinutes();
+            if (minutes < 10) {
+              minutes = '0' + minutes;
+            }
+
+            $('<p></p>').addClass('postmeta').text(' postade det här kl ' + created.getHours() + ':' + minutes).prepend($('<a></a>').text(result.from_user).attr('href', 'http://twitter.com/' + result.from_user)).appendTo(postbody);
             $('<p></p>').html(result.text.replace(url_to_a, '<a href="$1">$1</a>').replace(user_to_a, '<span class="at">@</span><a href="http://twitter.com/$1">$1</a>').replace(hash_to_a, '<a href="http://search.twitter.com/search?q=$1">$1</a>')).appendTo(postbody);
 
             tweet.append(postbody).hide().prependTo(box).css('min-height', '0').slideDown(function () {
