@@ -1,0 +1,5 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  RewriteCond %{HTTP_HOST} !^svpt.nu$ [NC]
+  RewriteRule ^(.*)$ http://svpt.nu/$1 [R=301,L]
+</IfModule>
