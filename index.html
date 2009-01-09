@@ -27,6 +27,12 @@
 
       update_toplist = function() {
         var top = [], i = 0, length = 0, topdom, sidebar, toplist;
+
+        sidebar = $('#sidebar');
+        if (!sidebar.length) {
+          return;
+        }
+
         for (var key in users) {
           if (top[0] === undefined) {
             top[0] = {count: users[key].count, user: key}
@@ -48,7 +54,6 @@
         if (top.length) {
           toplist = $('#sidebar_toplist_widget ol');
           if (!toplist.length) {
-           sidebar = $('#sidebar');
            sidebar.append('<hr/>');
 
            toplist = $('<ol></ol>');
