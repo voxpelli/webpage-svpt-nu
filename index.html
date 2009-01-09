@@ -39,14 +39,14 @@
           }
           else if (users[key].count > top[length].count) {
             for (i = 0; i < length + 1; i++) {
-              if (users[key] > top[i].count) {
+              if (users[key].count > top[i].count) {
                 top.splice(i, 0, {count: users[key].count, user: key});
                 length++;
                 break;
               }
             } 
           }
-          else if (length < 5) {
+          else if (length < 9) {
             length++;
             top[length] = {count: users[key].count, user: key}
           }
@@ -57,11 +57,11 @@
            sidebar.append('<hr/>');
 
            toplist = $('<ol></ol>');
-           $('<div><h2>Fem toppkvittrare nu</h2></div>').attr('id', 'sidebar_toplist_widget').append(toplist).appendTo(sidebar);
+           $('<div><h2>Nio toppkvittrare nu</h2></div>').attr('id', 'sidebar_toplist_widget').append(toplist).appendTo(sidebar);
           }
           toplist.children().remove();
-          if (length > 4) {
-            length = 4;
+          if (length > 8) {
+            length = 8;
           }
           for (i = 0; i < length + 1; i++) {
             $('<li></li>').append($('<img/>').attr({alt: '', src: users[top[i].user].image})).append($('<a></a>').attr({href: 'http://twitter.com/' + top[i].user}).text(' ' + top[i].user + ' ')).append($('<span></span>').text('' + top[i].count)).appendTo(toplist);
@@ -110,6 +110,8 @@
               $(this).css('min-height', '');
             });
           }
+
+          box.children(':gt(50)').remove();
 
           update_toplist();
 
