@@ -64,7 +64,7 @@
             length = 8;
           }
           for (i = 0; i < length + 1; i++) {
-            $('<li></li>').append($('<img/>').attr({alt: '', src: users[top[i].user].image})).append($('<a></a>').attr({href: 'http://twitter.com/' + top[i].user}).text(' ' + top[i].user + ' ')).append($('<span></span>').text('' + top[i].count)).appendTo(toplist);
+            $('<li></li>').append($('<span></span>').text('' + top[i].count)).append($('<img/>').attr({alt: '', src: users[top[i].user].image})).append($('<a></a>').attr({href: 'http://twitter.com/' + top[i].user}).text(' ' + top[i].user + ' ')).appendTo(toplist);
           }
         }
       };
@@ -139,7 +139,11 @@
 	<div id="sidebar">
 		<div id="sidebar_infobox">
 			<h2>Information</h2>
-			<p>Svpt.nu är ett enkelt sätt att följa allt som sägs inom hashtaggen #<abbr title="Svenskar på Twitter">svpt</abbr>. Detta gjordes under ungefär en timma en snuvig januarikväll när Twitter fullkomligt exploderade med svenska användare. </p>
+			<p><script type="text/javascript">
+      var pusha_bakgrund="#DFDFDF";
+      </script>
+      <script src="http://www.pusha.se/knapp/pusha.js" type="text/javascript"></script>Svpt.nu är ett enkelt sätt att följa allt som sägs inom hashtaggen #<abbr title="Svenskar på Twitter">svpt</abbr>. Detta gjordes under ungefär en timma en snuvig fredagskväll när Twitter fullkomligt exploderade med svenska användare. 
+				<br />Det går även strålande att se senaste inläggen från din <a href="http://www.apple.com/se/iphone/">iPhone</a>.</p>
 		</div>
 <!--		<hr />
 		<div id="sidebar_senaste_lankar">

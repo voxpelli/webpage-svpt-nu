@@ -133,9 +133,14 @@ hr{
 
 #sidebar_toplist_widget ol{
 	margin-left: 20px;
-	line-height: 150%;
+	line-height: 180%;
 	margin-bottom: 5px;
 }
+
+#sidebar_toplist_widget ol li{
+	clear:left;
+}
+
 
 #sidebar_toplist_widget ol li span{
 	float: right;
@@ -154,6 +159,11 @@ hr{
 	line-height: 150%;
 	margin-left: 20px;
 	margin-bottom: 5px;
+}
+
+#pusha_knapp {
+  float: right;
+  margin: 0 0 10px 10px;
 }
 
 #footer{
