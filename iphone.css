@@ -3,11 +3,13 @@
 	margin:0;
 }
 
+html {-webkit-text-size-adjust:150%}
+
 body{
-	font-size: 16px;
 	background-color: #f4f4f4;
 	color: #333;
-	font-family: "Times New Roman", Times, Georgia, serif;
+	font-family: Helvetica, Arial, "MS Trebuchet", sans-serif;
+	padding:0 10px;
 }
 
 a{
@@ -27,21 +29,20 @@ hr{
 }
 
 #wrapper{
-	padding-top:20px;
-	width: 960px;
-	margin-left: auto;
-	margin-right: auto;
+	width:100%;
 }
 
 #header{
-	margin-bottom: 20px;
+	margin-bottom: 10px;
+
 }
 
 
 #header h1{
 	font-family: Helvetica, Arial, "MS Trebuchet", sans-serif;
-	font-size: 40px;
+	font-size: 150%;
 	font-weight: bold;
+	text-transform: uppercase;
 }
 
 #header h2{
@@ -51,6 +52,7 @@ hr{
 	margin-bottom:10px;
 	text-transform: uppercase;
 	color: #777;
+	display:none;
 }
 
 #header h2 abbr{
@@ -59,7 +61,7 @@ hr{
 }
 
 #main{
-	width: 600px;
+	width: 320px;
 	margin-right: 40px;
 	float:left;
 }
@@ -75,6 +77,7 @@ hr{
 	color: #444;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
+	display:none;
 }
 
 #sidebar h2{
@@ -89,11 +92,10 @@ hr{
 	clear:both;
 	margin-bottom:10px;
 	padding-bottom:5px;
-	width: 600px;
 	display: block;
 	color: #444;
 	min-height: 86px;
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid #ccc;
 }
 
 .postbody{
@@ -110,13 +112,12 @@ hr{
 }
 
 .avatar{
-	width: 73px;
-	height: 73px;
-	padding: 3px;
+	width: 48px;
+	height: 48px;
 	border: 1px solid #ddd;
 	background-color: #fff;
-	margin-right: 10px;
-	float:left;
+	margin-left: 10px;
+	float:right;
 }
 
 /* Sidebar */
@@ -164,6 +165,7 @@ hr{
 	font-weight: bold;
 	text-transform: uppercase;
 	padding:15px 0;
+	display:none;
 }
 
 .at{
