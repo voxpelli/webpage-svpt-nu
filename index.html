@@ -106,9 +106,12 @@
             $('<p></p>').addClass('postmeta').text(' skrev det här kl ' + created.getHours() + ':' + minutes).prepend($('<a></a>').text(result.from_user).attr('href', 'http://twitter.com/' + result.from_user)).appendTo(postbody);
             $('<p></p>').html(result.text.replace(url_to_a, '<a href="$1">$1</a>').replace(user_to_a, '<span class="at">@</span><a href="http://twitter.com/$1">$1</a>').replace(hash_to_a, '#<a href="http://search.twitter.com/search?q=%23$1">$1</a>')).appendTo(postbody);
 
-            tweet.append(postbody).prependTo(box).hide().css('min-height', '0').slideDown(function () {
-              $(this).css('min-height', '');
-            });
+            tweet.append(postbody).prependTo(box);
+            if (!statistics) {
+              tweet.hide().css('min-height', '0').slideDown(function () {
+                $(this).css('min-height', '');
+              });
+            }
           }
 
           box.children(':gt(50)').remove();
@@ -139,11 +142,16 @@
 	<div id="sidebar">
 		<div id="sidebar_infobox">
 			<h2>Information</h2>
-			<p><script type="text/javascript">
-      var pusha_bakgrund="#DFDFDF";
-      </script>
-      <script src="http://www.pusha.se/knapp/pusha.js" type="text/javascript"></script>Svpt.nu är ett enkelt sätt att följa allt som sägs inom hashtaggen #<abbr title="Svenskar på Twitter">svpt</abbr>. Detta gjordes en snuvig fredagskväll när Twitter fullkomligt exploderade med svenska användare. 
-				<br />Det går även strålande att se senaste inläggen från din <a href="http://www.apple.com/se/iphone/">iPhone</a>. Du kan följa oss på @<a href="http://www.twitter.com/voxpelli">voxpelli</a> och @<a href="http://twitter.com/peterrosdahl">peterrosdahl</a> </p>
+			<p>
+  			<script type="text/javascript">
+        var pusha_bakgrund="#DFDFDF";
+        </script>
+        <script src="http://www.pusha.se/knapp/pusha.js" type="text/javascript"></script>
+        Svpt.nu är ett enkelt sätt att följa allt som sägs inom hashtaggen #<abbr title="Svenskar på Twitter">svpt</abbr>.
+        Detta gjordes en snuvig fredagskväll när Twitter fullkomligt exploderade med svenska användare.<br />
+        Det går även strålande att se senaste inläggen från din <a href="http://www.apple.com/se/iphone/">iPhone</a>.
+        Du kan följa oss på @<a href="http://www.twitter.com/voxpelli">voxpelli</a> och @<a href="http://twitter.com/peterrosdahl">peterrosdahl</a>
+      </p>
 		</div>
 <!--		<hr />
 		<div id="sidebar_senaste_lankar">
