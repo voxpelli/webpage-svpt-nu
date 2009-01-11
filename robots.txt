@@ -1,1 +1,4 @@
+User-Agent: *
+Allow: /
+
 Sitemap: http://svpt.nu/sitemap.xml
