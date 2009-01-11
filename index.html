@@ -26,7 +26,7 @@
     $(function () {
       var update_search, update_toplist, users = {};
 
-      $('#nojavascript').text('Laddar...');
+      $('#nojavascript').after('<p id="loading">Laddar...</p>').remove();
 
       update_toplist = function() {
         var top = [], i = 0, length = 0, topdom, sidebar, toplist;
@@ -41,7 +41,7 @@
             top[0] = {count: users[key].count, user: key}
           }
           else if (users[key].count > top[length].count) {
-            for (i = 0; i < length + 1; i++) {
+            for (i = 0; i <= length; i++) {
               if (users[key].count > top[i].count) {
                 top.splice(i, 0, {count: users[key].count, user: key});
                 length++;
@@ -49,9 +49,12 @@
               }
             } 
           }
-          else if (length < 9) {
+          else if (length < 8) {
             length++;
             top[length] = {count: users[key].count, user: key}
+          }
+          if (length > 8) {
+            length = 8;
           }
         }
         if (top.length) {
@@ -63,18 +66,15 @@
            $('<div><h2>Nio toppkvittrare nu</h2></div>').attr('id', 'sidebar_toplist_widget').append(toplist).appendTo(sidebar);
           }
           toplist.children().remove();
-          if (length > 8) {
-            length = 8;
-          }
-          for (i = 0; i < length + 1; i++) {
+          for (i = 0; i <= length; i++) {
             $('<li></li>').append($('<span></span>').text('' + top[i].count)).append($('<img/>').attr({alt: '', src: users[top[i].user].image})).append($('<a></a>').attr({href: 'http://twitter.com/' + top[i].user}).text(' ' + top[i].user + ' ')).appendTo(toplist);
           }
         }
       };
 
       update_search = function (maxid, statistics) {
-        $.getJSON('http://search.twitter.com/search.json?callback=?', {q: '#svpt', since_id: maxid, rpp: 100}, function (data, textStatus) {
-          $('#nojavascript').remove();
+        $.getJSON('http://search.twitter.com/search.json?callback=?', {q: '#svpt', since_id: maxid, rpp: statistics ? 100 : 30}, function (data, textStatus) {
+          $('#loading').remove();
           var i = data.results.length - 1, box = $('#main'), tweet, postbody, result, url_to_a, user_to_a, hash_to_a, time, minutes;
           url_to_a = /\b(http:\/\/[a-z0-9-]+(?:\.[a-z0-9-]+)*\.[a-z]{2,4}(?:[-a-z0-9_:&?=+,.!\/*%\$]*)?)\b/gim;
           user_to_a = /@([a-z0-9-_]+)\b/gim;
@@ -127,7 +127,12 @@
         });
       };
 
-      update_search(0, true);
+      if (RegExp(" AppleWebKit/").test(navigator.userAgent) && RegExp(" Mobile/").test(navigator.userAgent)) {
+        update_search(0);
+      }
+      else {
+        update_search(0, true);
+      }
     });
   //]]>
   </script>
