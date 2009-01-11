@@ -127,7 +127,10 @@ hr{
 
 #sidebar_infobox{
 	margin-bottom: 15px;
+}
 
+#sidebar_infobox p{
+	line-height: 150%;
 }
 
 #sidebar_toplist_widget{
