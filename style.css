@@ -5,7 +5,7 @@
 
 body{
 	font-size: 16px;
-	background-color: #f4f4f4;
+	background-color: #f9f9f9;
 	color: #333;
 	font-family: "Times New Roman", Times, Georgia, serif;
 }
@@ -88,12 +88,16 @@ hr{
 .post{
 	clear:both;
 	margin-bottom:10px;
-	padding-bottom:5px;
+	margin-bottom:5px;
 	width: 600px;
 	display: block;
 	color: #444;
 	min-height: 86px;
 	border-bottom: 1px solid #ddd;
+}
+
+.post:hover{
+
 }
 
 .postbody{
