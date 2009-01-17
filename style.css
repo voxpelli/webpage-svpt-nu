@@ -31,6 +31,10 @@ hr{
 	border-left: none;
 }
 
+#loading{
+
+}
+
 #wrapper{
 	padding-top:20px;
 	width: 960px;
@@ -63,6 +67,10 @@ hr{
 	width: 600px;
 	margin-right: 40px;
 	float:left;
+}
+
+#nojavascript{
+	width:640px;
 }
 
 #sidebar{
@@ -129,12 +137,22 @@ hr{
 }
 
 #tweetit{
-	width: 298px;
+	width: 299px;
 	text-align: center;
 	display: block;
 	padding: 5px 0;
-	background-color: #fff;
-	border: 1px solid #ddd;
+	background-color: #f9f9f9;
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	margin-top: 10px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+#delicious{
+	width: 300px;
+	text-align: center;
+	display: block;
 	margin-top: 10px;
 	text-transform: uppercase;
 	font-weight: bold;
@@ -147,6 +165,7 @@ hr{
 #sidebar_toplist_widget{
 	margin-top: 15px;
 	margin-bottom:15px;
+	width: 285px;
 }
 
 #sidebar_toplist_widget ol{
@@ -179,6 +198,12 @@ hr{
 	margin-bottom: 5px;
 }
 
+#sidebar_omnamnanden ul{
+	line-height: 150%;
+	margin-left: 20px;
+	margin-bottom: 5px;
+}
+
 #pusha_knapp {
   float: right;
   margin: 0 0 10px 10px;
@@ -188,7 +213,7 @@ hr{
 	color: #444;
 	clear:both;
 	font-family: Helvetica, Arial, "MS Trebuchet", sans-serif;
-	font-size: 24px;
+	font-size: 12px;
 	font-weight: bold;
 	text-transform: uppercase;
 	padding:15px 0;

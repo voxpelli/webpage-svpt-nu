@@ -8,7 +8,7 @@
 	<meta name="keywords" content="Twitter, svpt, svenskar, svenska, swedish, swedes, kvitter, tweets, mikroblogg" />
 	<meta name="robots" content="index, follow" />
 
-	<title>Kvittrande Svenskar</title>
+	<title>Svpt.nu - Svenskar på Twitter</title>
 
   <link rel="alternate" type="application/atom+xml" title="#svpt - Twitter Search" href="http://search.twitter.com/search.atom?q=%23svpt" />
 
@@ -26,7 +26,7 @@
     $(function () {
       var update_search, update_toplist, users = {};
 
-      $('#nojavascript').after('<p id="loading">Laddar...</p>').remove();
+      $('#nojavascript').after('<p id="loading"><img src="load.gif" /></p>').remove();
 
       update_toplist = function() {
         var top = [], i = 0, length = 0, topdom, sidebar, toplist;
@@ -158,8 +158,9 @@
         Svpt.nu är ett enkelt sätt att följa allt som sägs inom hashtaggen #<abbr title="Svenskar på Twitter">svpt</abbr>.
         Detta gjordes en snuvig fredagskväll när Twitter fullkomligt exploderade med svenska användare.<br />
         Det går även strålande att se senaste inläggen från din <a href="http://www.apple.com/se/iphone/">iPhone</a>.
-        Du kan följa oss på @<a href="http://www.twitter.com/voxpelli">voxpelli</a> och @<a href="http://twitter.com/peterrosdahl">peterrosdahl</a>.
-<a id="tweetit" href="http://twitter.com/home/?status=Följ+svenska+kvittrare+på+http://svpt.nu/+%23svpt">Kvittra om oss</a>
+        Du kan följa oss på @<a href="http://twitter.com/voxpelli">voxpelli</a> och @<a href="http://twitter.com/peterrosdahl">peterrosdahl</a>.
+<a id="tweetit" href="http://twitter.com/home/?status=Följ+svenska+kvittrare+på+http://svpt.nu/+%23svpt">Kvittra om Svpt.nu</a>
+<a id="delicious" href="http://del.icio.us/post?url=http://svpt.nu&title=Kvittrande%20Svenskar">Spara på Delicious</a>
       </p>
 		</div>
 <!--		<hr />
@@ -179,11 +180,22 @@
 			</ul>
 			<a href="/">Fler länkar</a>
 		</div>-->
-		
+		<div id="sidebar_omnamnanden">
+			<h2>Omnämnanden</h2>
+			<ul>
+				<li><a href="http://www.svartling.org/2009/01/svenskar-p-twitter.html">Svartling</a></li>
+				<li><a href="http://betaalfa.polymono.net/2009/01/12/svenskar-pa-twitter/">BetaAlfa</a></li>
+				<li><a href="http://mikroblogg.se/svpt-svenskar-pa-twitter/">Mikroblogg.se</a></li>
+				<li><a href="http://ohsohightech.se/vad-ar-twitter/">Ohsohightech</a></li>
+				<li><a href="http://www.webmastern.se/2009/01/hitta-svenskar-pa-twitter/">Webmastern</a></li>
+				<li><a href="http://www.jontusmedia.com/jon-buscall/view/sweden-embraces-twitter/">Jon Buscall</a></li>
+				<li><a href="http://www.jessicanyberg.se/default.asp?id=460">Högerspöket</a></li>
+			</ul>
+		</div>
 	</div>
 
 	<div id="footer">
-		<p>Hoppa in det nya året med <a href="http://www.twitter.com">Twitter</a> redan nu! /<a href="http://twitter.com/voxpelli">P</a>&amp;<a href="http://twitter.com/peterrosdahl">P</a></p>
+		<p>Börja kvittra du också! Gå in på <a href="http://www.twitter.com">Twitter</a> redan nu och skapa ett konto!</p>
 		
 	</div>
 </div>

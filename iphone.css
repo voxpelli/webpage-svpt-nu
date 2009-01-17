@@ -3,7 +3,7 @@
 	margin:0;
 }
 
-html {-webkit-text-size-adjust:150%}
+html {-webkit-text-size-adjust:150%;}
 
 body{
 	background-color: #f4f4f4;
@@ -28,6 +28,10 @@ hr{
 	border-left: none;
 }
 
+#loading{
+	text-align: center;
+}
+
 #wrapper{
 	width:100%;
 }
@@ -38,11 +42,12 @@ hr{
 }
 
 
-#header h1{
+#header h1 a{
 	font-family: Helvetica, Arial, "MS Trebuchet", sans-serif;
-	font-size: 150%;
+	-webkit-text-size-adjust:80%;
 	font-weight: bold;
 	text-transform: uppercase;
+	width: 320px;
 }
 
 #header h2{
