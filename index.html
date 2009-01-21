@@ -26,7 +26,7 @@
     $(function () {
       var update_search, update_toplist, users = {};
 
-      $('#nojavascript').after('<p id="loading"><img src="load.gif" /></p>').remove();
+      $('#nojavascript').html('<img src="load.gif" />').attr('id', 'loading');
 
       update_toplist = function() {
         var top = [], i = 0, length = 0, topdom, sidebar, toplist;
@@ -185,11 +185,14 @@
 			<ul>
 				<li><a href="http://www.svartling.org/2009/01/svenskar-p-twitter.html">Svartling</a></li>
 				<li><a href="http://betaalfa.polymono.net/2009/01/12/svenskar-pa-twitter/">BetaAlfa</a></li>
+				<li><a href="http://webb.feber.se/art/148139/folj-svenskar-pa-twitter/">Feber</a></li>
 				<li><a href="http://mikroblogg.se/svpt-svenskar-pa-twitter/">Mikroblogg.se</a></li>
 				<li><a href="http://ohsohightech.se/vad-ar-twitter/">Ohsohightech</a></li>
+				<li><a href="http://webbsverige.wordpress.com/2009/01/14/svenskar-pa-twitter-webbtjanst/">Webbsverige</a></li>
 				<li><a href="http://www.webmastern.se/2009/01/hitta-svenskar-pa-twitter/">Webmastern</a></li>
 				<li><a href="http://www.jontusmedia.com/jon-buscall/view/sweden-embraces-twitter/">Jon Buscall</a></li>
 				<li><a href="http://www.jessicanyberg.se/default.asp?id=460">Högerspöket</a></li>
+				<li><a href="http://www.metro.se/se/article/2009/01/18/18/5638-65/index.xml">Metro</a></li>
 			</ul>
 		</div>
 	</div>
